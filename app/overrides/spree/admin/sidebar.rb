@@ -3,7 +3,7 @@ Deface::Override.new(
   name: 'add avalara information link',
   insert_bottom: '[data-hook="admin_user_tab_options"]',
 ) do
-  <<~HTML
+  <<-HTML.strip
     <li>
       <%= link_to_with_icon 'money',
         Spree.t('spree_avatax_official.information_url'),
