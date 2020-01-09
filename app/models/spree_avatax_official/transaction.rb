@@ -12,11 +12,11 @@ module SpreeAvataxOfficial
 
     belongs_to :order, class_name: 'Spree::Order'
 
-    with_options presence: true do
-      validates :code, uniqueness: true
-      validates :order
-      validates :transaction_type
-    end
+    # with_options presence: true do
+      validates :code, uniqueness: true, presence: true
+      validates :order, presence: true
+      validates :transaction_type, presence: true
+    # end
 
     validates :transaction_type, inclusion: { in: AVAILABLE_TRANSACTION_TYPES }
 

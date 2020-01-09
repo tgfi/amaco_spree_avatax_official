@@ -28,7 +28,11 @@ module SpreeAvataxOfficial
     end
 
     def company_code(order)
-      order.store&.avatax_company_code || SpreeAvataxOfficial::Config.company_code
+      if order.respond_to?(:store)
+        order.store.try(:avatax_company_code) || SpreeAvataxOfficial::Config.company_code
+      else
+        SpreeAvataxOfficial::Config.company_code
+      end
     end
 
     def request_result(response, object = nil)
